@@ -1,5 +1,5 @@
 /*
- * Copyright 1999-2017 Alibaba Group Holding Ltd.
+ * Copyright 1999-2018 Alibaba Group Holding Ltd.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -49,6 +49,7 @@ public class SQLColumnDefinition extends SQLObjectImpl implements SQLTableElemen
     protected boolean                         virtual       = false;
 
     protected Identity                        identity;
+    protected SQLExpr                         generatedAlawsAs;
 
     public SQLColumnDefinition(){
 
@@ -59,11 +60,22 @@ public class SQLColumnDefinition extends SQLObjectImpl implements SQLTableElemen
     }
 
     // for sqlserver
-    public void setIdentity(Identity identity) {
-        if (identity != null) {
-            identity.setParent(this);
+    public void setIdentity(Identity x) {
+        if (x != null) {
+            x.setParent(this);
         }
-        this.identity = identity;
+        this.identity = x;
+    }
+
+    public SQLExpr getGeneratedAlawsAs() {
+        return generatedAlawsAs;
+    }
+
+    public void setGeneratedAlawsAs(SQLExpr x) {
+        if (x != null) {
+            x.setParent(this);
+        }
+        this.generatedAlawsAs = x;
     }
 
     public Boolean getEnable() {
